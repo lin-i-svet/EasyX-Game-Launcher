@@ -9,7 +9,7 @@
 
 EasyX Game Launcher 是一个运行于 Windows 的棋类游戏启动器，当前集成了 **五子棋、四子棋和六贯棋** 三款游戏。两名玩家可以共用一套键盘进行回合制对战，程序提供开始菜单、游戏选择、对局、胜负结算和返回首页等完整流程。
 
-这个仓库以源码展示和 C++ 图形编程学习为主，不提供预编译可执行文件。当前源码版本标识为 **v1.7**。
+这个仓库以源码展示和 C++ 图形编程学习记录为主，同时提供可直接运行的 **v1.7 发布包**。v1.7 是本项目的最终版本。
 
 ## 已实现游戏
 
@@ -126,9 +126,41 @@ EasyX Game Launcher/
 
 项目从 v1.0 的基础菜单与五子棋逐步迭代，先后加入四子棋、六贯棋、UI 优化、规则说明、输入法切换和页面返回功能。详细过程参见 [v1.7 开发日志](./林和光_开发日志%20v1.7.txt)。
 
-## 构建与运行
+## 下载与运行
 
-### 环境要求
+### 方式一：下载发布版（推荐）
+
+不需要自行配置编译环境，直接使用已经打包好的最终发布版：
+
+1. 打开 [EasyX Game Launcher v1.7 Release](https://github.com/lin-i-svet/EasyX-Game-Launcher/releases/tag/v1.7)。
+2. 在 **Assets** 中下载 [`Release.Version.1.7.zip`](https://github.com/lin-i-svet/EasyX-Game-Launcher/releases/download/v1.7/Release.Version.1.7.zip)。
+3. 完整解压压缩包并保留包内目录结构。
+4. 运行解压目录中的可执行文件。
+
+| 发布信息 | 内容 |
+| --- | --- |
+| 版本 | v1.7（最终版本） |
+| 发布日期 | 2025-10-30 |
+| 压缩包大小 | 685 KB |
+| 文件名 | `Release.Version.1.7.zip` |
+
+> GitHub 自动生成的 `Source code (zip)` 和 `Source code (tar.gz)` 仅包含源码，不是可直接运行的发布包。普通用户应下载 `Release.Version.1.7.zip`。
+
+如需验证下载文件的完整性，可在 PowerShell 中执行：
+
+```powershell
+(Get-FileHash ".\Release.Version.1.7.zip" -Algorithm SHA256).Hash.ToLower()
+```
+
+预期 SHA-256：
+
+```text
+cf5b9e9a9478cbfc91f269889c68ebb98dda74cd298dc4a61de97688e70310fa
+```
+
+### 方式二：从源码构建
+
+#### 环境要求
 
 - Windows
 - Visual Studio 2022，安装“使用 C++ 的桌面开发”工作负载
@@ -138,23 +170,26 @@ EasyX Game Launcher/
 
 项目工程提供 `Debug` / `Release` 与 `x86` / `x64` 配置。
 
-### 运行步骤
+#### 构建步骤
 
-1. 克隆或下载本仓库。
-2. 安装 Visual Studio 2022 和 EasyX，并确保当前 Visual Studio 环境能够找到 `easyx.h` 及 EasyX 链接库。
+1. 克隆仓库，或下载 GitHub 自动生成的源码压缩包并解压。
+2. 安装 Visual Studio 2022 和 EasyX，并确保 Visual Studio 能够找到 `easyx.h` 及 EasyX 链接库。
 3. 打开 `Project File/林和光_EasyX 学习版.sln`。
 4. 选择需要的生成配置和目标平台，然后生成解决方案。
-5. 使用 Visual Studio 启动调试或直接运行程序。
+5. 使用 Visual Studio 启动调试或运行生成的程序。
 
 ### 资源路径说明
 
-图片和音频通过 `asset\...` 相对路径加载，未嵌入可执行文件。运行时应将工作目录设置为 `Project File`：
+图片和音频通过 `asset\...` 相对路径加载，未嵌入可执行文件：
+
+- 使用发布版时，请完整解压并保留压缩包原有目录结构，不要单独移动可执行文件。
+- 从源码运行时，应将工作目录设置为 `Project File`：
 
 ```text
 项目属性 → 配置属性 → 调试 → 工作目录 → $(ProjectDir)
 ```
 
-如果界面背景或音效未正常加载，请优先检查工作目录以及 `Project File/asset` 是否完整。部分源码包含本地代码页中文文本，建议保留工程现有字符集和文件编码，避免批量转换后出现乱码。
+如果界面背景或音效未正常加载，请优先检查运行目录和 `asset` 文件夹是否完整。部分源码包含本地代码页中文文本，建议保留工程现有字符集和文件编码，避免批量转换后出现乱码。
 
 ## 技术要点
 
