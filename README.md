@@ -1,10 +1,6 @@
 # EasyX Game Launcher
 
 <p align="center">
-  <img src="./Project%20File/asset/image/BeginPhoto.jpg" width="600" alt="EasyX Game Launcher 开始页主题图片">
-</p>
-
-<p align="center">
   <strong>基于 C++ 与 EasyX 实现的本地双人棋类小游戏合集</strong><br>
   从页面状态管理、键盘交互到棋盘胜负算法，完整展示一个 Windows 图形小游戏项目的核心实现。
 </p>
